@@ -15,6 +15,7 @@ export interface IStorage {
   getWebapps(): Promise<WebappWithScores[]>;
   getWebapp(id: number): Promise<WebappWithScores | undefined>;
   createWebapp(webapp: InsertWebapp): Promise<Webapp>;
+  deleteWebapp(id: number): Promise<void>;
   createVote(vote: InsertVote): Promise<Vote>;
   getVotesForWebapp(webappId: number): Promise<Vote[]>;
 }
@@ -90,6 +91,11 @@ export class DatabaseStorage implements IStorage {
   async createWebapp(insertWebapp: InsertWebapp): Promise<Webapp> {
     const [webapp] = await db.insert(webapps).values(insertWebapp).returning();
     return webapp;
+  }
+
+  async deleteWebapp(id: number): Promise<void> {
+    await db.delete(votes).where(eq(votes.webappId, id));
+    await db.delete(webapps).where(eq(webapps.id, id));
   }
 
   async createVote(insertVote: InsertVote): Promise<Vote> {

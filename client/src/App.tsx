@@ -8,6 +8,8 @@ import Home from "@/pages/Home";
 import Submit from "@/pages/Submit";
 import VotePage from "@/pages/VotePage";
 import Scoreboard from "@/pages/Scoreboard";
+import AdminLogin from "@/pages/AdminLogin";
+import Admin from "@/pages/Admin";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -17,6 +19,8 @@ function Router() {
       <Route path="/indienen" component={Submit} />
       <Route path="/stemmen/:id" component={VotePage} />
       <Route path="/scorebord" component={Scoreboard} />
+      <Route path="/admin/login" component={AdminLogin} />
+      <Route path="/admin" component={Admin} />
       <Route component={NotFound} />
     </Switch>
   );

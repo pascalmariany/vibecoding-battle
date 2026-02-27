@@ -1,6 +1,7 @@
 import { Link, useLocation } from "wouter";
-import { Trophy, PlusCircle, BarChart3, Menu, X } from "lucide-react";
+import { Trophy, PlusCircle, BarChart3, Menu, X, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 const navItems = [
@@ -12,6 +13,14 @@ const navItems = [
 export default function Header() {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const { data: authStatus } = useQuery<{ isAdmin: boolean }>({
+    queryKey: ["/api/admin/status"],
+  });
+
+  const allItems = authStatus?.isAdmin
+    ? [...navItems, { href: "/admin", label: "Admin", icon: Shield }]
+    : navItems;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#3B28A0]/10 bg-white/95 backdrop-blur-sm">
@@ -33,7 +42,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-1" data-testid="nav-desktop">
-          {navItems.map((item) => {
+          {allItems.map((item) => {
             const isActive = location === item.href;
             return (
               <Link key={item.href} href={item.href}>
@@ -68,7 +77,7 @@ export default function Header() {
       {mobileOpen && (
         <div className="md:hidden border-t border-[#3B28A0]/10 bg-white px-4 pb-4 pt-2">
           <nav className="flex flex-col gap-1" data-testid="nav-mobile">
-            {navItems.map((item) => {
+            {allItems.map((item) => {
               const isActive = location === item.href;
               return (
                 <Link key={item.href} href={item.href}>
