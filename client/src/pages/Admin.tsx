@@ -12,8 +12,9 @@ export default function Admin() {
   const { toast } = useToast();
   const [, navigate] = useLocation();
 
-  const { data: authStatus, isLoading: authLoading } = useQuery<{ isAdmin: boolean }>({
+  const { data: authStatus, isLoading: authLoading, isFetched } = useQuery<{ isAdmin: boolean }>({
     queryKey: ["/api/admin/status"],
+    staleTime: 0,
   });
 
   const { data: webapps, isLoading } = useQuery<WebappWithScores[]>({
@@ -62,7 +63,7 @@ export default function Admin() {
     );
   }
 
-  if (!authStatus?.isAdmin) {
+  if (isFetched && !authStatus?.isAdmin) {
     navigate("/admin/login");
     return null;
   }

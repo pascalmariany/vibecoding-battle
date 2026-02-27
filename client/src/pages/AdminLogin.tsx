@@ -39,8 +39,9 @@ export default function AdminLogin() {
       const res = await apiRequest("POST", "/api/admin/login", data);
       return res.json();
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/admin/status"] });
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["/api/admin/status"] });
+      await queryClient.refetchQueries({ queryKey: ["/api/admin/status"] });
       toast({ title: "Ingelogd als admin" });
       navigate("/admin");
     },
