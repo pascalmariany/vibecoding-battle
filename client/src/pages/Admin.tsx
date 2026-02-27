@@ -26,7 +26,7 @@ export default function Admin() {
       await apiRequest("POST", "/api/admin/logout");
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/admin/status"] });
+      queryClient.setQueryData(["/api/admin/status"], { isAdmin: false });
       toast({ title: "Uitgelogd" });
       navigate("/");
     },
