@@ -70,8 +70,8 @@ export default function Submit() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#EBF1FA] to-white">
-      <div className="bg-[#002F94] py-12">
+    <div className="min-h-screen bg-gradient-to-b from-[#EDEAFA] to-white">
+      <div className="bg-[#3B28A0] py-12">
         <div className="mx-auto max-w-2xl px-4 md:px-6">
           <Link href="/">
             <Button variant="ghost" className="text-white/70 mb-4 -ml-2" data-testid="button-back-home">
@@ -89,7 +89,7 @@ export default function Submit() {
       </div>
 
       <div className="mx-auto max-w-2xl px-4 md:px-6 -mt-6">
-        <div className="rounded-md border border-[#002F94]/10 bg-white p-6 md:p-8">
+        <div className="rounded-md border border-[#3B28A0]/10 bg-white p-6 md:p-8">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
@@ -97,7 +97,7 @@ export default function Submit() {
                 name="teamName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#002F94] font-bold">Teamnaam / Maker</FormLabel>
+                    <FormLabel className="text-[#3B28A0] font-bold">Teamnaam / Maker</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Bijv. Team Rocket, Jan & Piet..."
@@ -115,7 +115,7 @@ export default function Submit() {
                 name="appName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#002F94] font-bold">App Naam</FormLabel>
+                    <FormLabel className="text-[#3B28A0] font-bold">App Naam</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="De naam van je web app"
@@ -133,7 +133,7 @@ export default function Submit() {
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#002F94] font-bold">Beschrijving</FormLabel>
+                    <FormLabel className="text-[#3B28A0] font-bold">Beschrijving</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Wat doet je app? Welk leerdoel wordt ermee bereikt? Wat maakt het uniek?"
@@ -152,7 +152,7 @@ export default function Submit() {
                 name="url"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#002F94] font-bold">URL van de App</FormLabel>
+                    <FormLabel className="text-[#3B28A0] font-bold">URL van de App</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="https://jouw-app.replit.app"
@@ -167,7 +167,7 @@ export default function Submit() {
 
               <Button
                 type="submit"
-                className="w-full bg-[#002F94] font-bold"
+                className="w-full bg-[#3B28A0] font-bold"
                 disabled={mutation.isPending}
                 data-testid="button-submit"
               >

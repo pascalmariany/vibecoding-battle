@@ -14,14 +14,14 @@ function ScoreBar({ label, value, max }: { label: string; value: number; max: nu
   const percentage = max > 0 ? (value / max) * 100 : 0;
   return (
     <div className="flex items-center gap-2">
-      <span className="text-xs text-[#002F94]/60 w-24 shrink-0 truncate">{label}</span>
-      <div className="flex-1 h-2 rounded-full bg-[#EBF1FA] overflow-hidden">
+      <span className="text-xs text-[#3B28A0]/60 w-24 shrink-0 truncate">{label}</span>
+      <div className="flex-1 h-2 rounded-full bg-[#EDEAFA] overflow-hidden">
         <div
-          className="h-full rounded-full bg-[#002F94] transition-all duration-500"
+          className="h-full rounded-full bg-[#3B28A0] transition-all duration-500"
           style={{ width: `${percentage}%` }}
         />
       </div>
-      <span className="text-xs font-bold text-[#002F94] w-8 text-right">
+      <span className="text-xs font-bold text-[#3B28A0] w-8 text-right">
         {value.toFixed(1)}
       </span>
     </div>
@@ -37,7 +37,7 @@ export default function WebappCard({ webapp, rank }: WebappCardProps) {
 
   return (
     <Card
-      className="group relative flex flex-col border-[#002F94]/10 bg-white p-0 hover-elevate"
+      className="group relative flex flex-col border-[#3B28A0]/10 bg-white p-0 hover-elevate"
       data-testid={`card-webapp-${webapp.id}`}
     >
       {rank && rank <= 3 && (
@@ -51,22 +51,22 @@ export default function WebappCard({ webapp, rank }: WebappCardProps) {
       <div className="p-5 pb-3">
         <div className="flex items-start justify-between gap-3 mb-2">
           <div className="min-w-0">
-            <h3 className="text-lg font-bold text-[#002F94] truncate" data-testid={`text-appname-${webapp.id}`}>
+            <h3 className="text-lg font-bold text-[#3B28A0] truncate" data-testid={`text-appname-${webapp.id}`}>
               {webapp.appName}
             </h3>
-            <p className="text-sm text-[#002F94]/60" data-testid={`text-teamname-${webapp.id}`}>
+            <p className="text-sm text-[#3B28A0]/60" data-testid={`text-teamname-${webapp.id}`}>
               {webapp.teamName}
             </p>
           </div>
           <div className="flex flex-col items-center shrink-0">
-            <div className="text-2xl font-black text-[#002F94]" data-testid={`text-score-${webapp.id}`}>
+            <div className="text-2xl font-black text-[#3B28A0]" data-testid={`text-score-${webapp.id}`}>
               {webapp.totalAvg.toFixed(1)}
             </div>
-            <div className="text-[10px] text-[#002F94]/50 uppercase tracking-wider">/ 6.0</div>
+            <div className="text-[10px] text-[#3B28A0]/50 uppercase tracking-wider">/ 6.0</div>
           </div>
         </div>
 
-        <p className="text-sm text-[#002F94]/70 line-clamp-2 mb-4" data-testid={`text-description-${webapp.id}`}>
+        <p className="text-sm text-[#3B28A0]/70 line-clamp-2 mb-4" data-testid={`text-description-${webapp.id}`}>
           {webapp.description}
         </p>
 
@@ -76,7 +76,7 @@ export default function WebappCard({ webapp, rank }: WebappCardProps) {
           <ScoreBar label="Gamification" value={webapp.avgCriterium3} max={2} />
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-[#002F94]/50">
+        <div className="flex items-center gap-2 text-xs text-[#3B28A0]/50">
           <Vote className="h-3 w-3" />
           <span data-testid={`text-votes-${webapp.id}`}>{webapp.voteCount} {webapp.voteCount === 1 ? "stem" : "stemmen"}</span>
         </div>
@@ -91,7 +91,7 @@ export default function WebappCard({ webapp, rank }: WebappCardProps) {
         >
           <Button
             variant="outline"
-            className="w-full border-[#002F94]/20 text-[#002F94]/70"
+            className="w-full border-[#3B28A0]/20 text-[#3B28A0]/70"
             data-testid={`link-visit-${webapp.id}`}
           >
             <ExternalLink className="mr-2 h-3.5 w-3.5" />
@@ -100,7 +100,7 @@ export default function WebappCard({ webapp, rank }: WebappCardProps) {
         </a>
         <Link href={`/stemmen/${webapp.id}`}>
           <Button
-            className="bg-[#002F94]"
+            className="bg-[#3B28A0]"
             data-testid={`link-vote-${webapp.id}`}
           >
             <Trophy className="mr-2 h-3.5 w-3.5" />
