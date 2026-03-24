@@ -70,26 +70,30 @@ export default function Submit() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#EDEAFA] to-white">
-      <div className="bg-[#3B28A0] py-12">
-        <div className="mx-auto max-w-2xl px-4 md:px-6">
+    <div className="min-h-screen">
+      <div className="relative overflow-hidden py-12">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/4 h-48 w-48 rounded-full bg-purple-600/20 blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 h-48 w-48 rounded-full bg-pink-500/20 blur-3xl" />
+        </div>
+        <div className="relative mx-auto max-w-2xl px-4 md:px-6">
           <Link href="/">
-            <Button variant="ghost" className="text-white/70 mb-4 -ml-2" data-testid="button-back-home">
+            <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/10 mb-4 -ml-2" data-testid="button-back-home">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Terug
             </Button>
           </Link>
           <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight" data-testid="text-submit-title">
-            App Indienen
+            App <span className="gradient-text">Indienen</span>
           </h1>
-          <p className="mt-2 text-white/60">
+          <p className="mt-2 text-white/50">
             Vul het formulier in om je web app in te dienen voor de Vibe Coden Battle.
           </p>
         </div>
       </div>
 
-      <div className="mx-auto max-w-2xl px-4 md:px-6 -mt-6">
-        <div className="rounded-md border border-[#3B28A0]/10 bg-white p-6 md:p-8">
+      <div className="mx-auto max-w-2xl px-4 md:px-6 -mt-4 pb-16">
+        <div className="glass-card rounded-xl p-6 md:p-8">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
@@ -97,10 +101,11 @@ export default function Submit() {
                 name="teamName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#3B28A0] font-bold">Teamnaam / Maker</FormLabel>
+                    <FormLabel className="text-white/80 font-bold">Teamnaam / Maker</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Bijv. Team Rocket, Jan & Piet..."
+                        className="glass-input"
                         {...field}
                         data-testid="input-team-name"
                       />
@@ -115,10 +120,11 @@ export default function Submit() {
                 name="appName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#3B28A0] font-bold">App Naam</FormLabel>
+                    <FormLabel className="text-white/80 font-bold">App Naam</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="De naam van je web app"
+                        className="glass-input"
                         {...field}
                         data-testid="input-app-name"
                       />
@@ -133,11 +139,11 @@ export default function Submit() {
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#3B28A0] font-bold">Beschrijving</FormLabel>
+                    <FormLabel className="text-white/80 font-bold">Beschrijving</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Wat doet je app? Welk leerdoel wordt ermee bereikt? Wat maakt het uniek?"
-                        className="min-h-[120px] resize-none"
+                        className="min-h-[120px] resize-none glass-input"
                         {...field}
                         data-testid="input-description"
                       />
@@ -152,10 +158,11 @@ export default function Submit() {
                 name="url"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#3B28A0] font-bold">URL van de App</FormLabel>
+                    <FormLabel className="text-white/80 font-bold">URL van de App</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="https://jouw-app.replit.app"
+                        className="glass-input"
                         {...field}
                         data-testid="input-url"
                       />
@@ -167,7 +174,7 @@ export default function Submit() {
 
               <Button
                 type="submit"
-                className="w-full bg-[#3B28A0] font-bold"
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold border-0 glow-purple"
                 disabled={mutation.isPending}
                 data-testid="button-submit"
               >

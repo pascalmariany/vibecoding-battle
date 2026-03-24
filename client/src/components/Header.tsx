@@ -23,21 +23,16 @@ export default function Header() {
     : navItems;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#3B28A0]/10 bg-white/95 backdrop-blur-sm">
+    <header className="glass-header sticky top-0 z-50 w-full">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
         <Link href="/" data-testid="link-home">
           <div className="flex items-center gap-3 cursor-pointer">
             <img
-              src="https://www.technovacollege.nl/themes/custom/cog/technova-logo.svg"
-              alt="Technova College"
-              className="h-10"
+              src="/logo.png"
+              alt="Onderwijsorakel"
+              className="h-10 w-auto drop-shadow-lg"
               data-testid="img-logo"
             />
-            <div className="hidden sm:block">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#3B28A0]">
-                Vibe Coden Battle
-              </span>
-            </div>
           </div>
         </Link>
 
@@ -50,8 +45,8 @@ export default function Header() {
                   variant={isActive ? "default" : "ghost"}
                   className={
                     isActive
-                      ? "bg-[#3B28A0] text-white"
-                      : "text-[#3B28A0]"
+                      ? "bg-purple-600 text-white glow-purple border border-purple-400/30"
+                      : "text-white/70 hover:text-white hover:bg-white/10"
                   }
                   data-testid={`nav-${item.label.toLowerCase()}`}
                 >
@@ -66,7 +61,7 @@ export default function Header() {
         <Button
           size="icon"
           variant="ghost"
-          className="md:hidden text-[#3B28A0]"
+          className="md:hidden text-white/70 hover:text-white hover:bg-white/10"
           onClick={() => setMobileOpen(!mobileOpen)}
           data-testid="button-mobile-menu"
         >
@@ -75,7 +70,7 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-[#3B28A0]/10 bg-white px-4 pb-4 pt-2">
+        <div className="md:hidden border-t border-white/10 bg-black/40 backdrop-blur-xl px-4 pb-4 pt-2">
           <nav className="flex flex-col gap-1" data-testid="nav-mobile">
             {allItems.map((item) => {
               const isActive = location === item.href;
@@ -85,8 +80,8 @@ export default function Header() {
                     variant={isActive ? "default" : "ghost"}
                     className={`w-full justify-start ${
                       isActive
-                        ? "bg-[#3B28A0] text-white"
-                        : "text-[#3B28A0]"
+                        ? "bg-purple-600 text-white"
+                        : "text-white/70 hover:text-white hover:bg-white/10"
                     }`}
                     onClick={() => setMobileOpen(false)}
                     data-testid={`nav-mobile-${item.label.toLowerCase()}`}

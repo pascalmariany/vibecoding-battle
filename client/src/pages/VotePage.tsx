@@ -100,16 +100,16 @@ export default function VotePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#EDEAFA] to-white">
-        <div className="bg-[#3B28A0] py-12">
+      <div className="min-h-screen">
+        <div className="py-12">
           <div className="mx-auto max-w-2xl px-4 md:px-6">
-            <Skeleton className="h-8 w-48 bg-white/20 mb-2" />
+            <Skeleton className="h-8 w-48 bg-white/10 mb-2" />
             <Skeleton className="h-5 w-64 bg-white/10" />
           </div>
         </div>
-        <div className="mx-auto max-w-2xl px-4 md:px-6 -mt-6">
-          <div className="rounded-md border border-[#3B28A0]/10 bg-white p-6">
-            <Skeleton className="h-40 w-full" />
+        <div className="mx-auto max-w-2xl px-4 md:px-6">
+          <div className="glass-card rounded-xl p-6">
+            <Skeleton className="h-40 w-full bg-white/10" />
           </div>
         </div>
       </div>
@@ -118,11 +118,11 @@ export default function VotePage() {
 
   if (!webapp) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#EDEAFA] to-white flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-xl font-bold text-[#3B28A0] mb-2">App niet gevonden</h2>
+          <h2 className="text-xl font-bold text-white mb-2">App niet gevonden</h2>
           <Link href="/">
-            <Button className="bg-[#3B28A0]">Terug naar overzicht</Button>
+            <Button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0">Terug naar overzicht</Button>
           </Link>
         </div>
       </div>
@@ -131,27 +131,37 @@ export default function VotePage() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#EDEAFA] to-white">
-        <div className="bg-[#3B28A0] py-12">
-          <div className="mx-auto max-w-2xl px-4 md:px-6 text-center">
-            <CheckCircle className="mx-auto h-16 w-16 text-green-400 mb-4" />
+      <div className="min-h-screen">
+        <div className="relative overflow-hidden py-12">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-green-500/20 blur-3xl" />
+          </div>
+          <div className="relative mx-auto max-w-2xl px-4 md:px-6 text-center">
+            <CheckCircle className="mx-auto h-16 w-16 text-green-400 mb-4 drop-shadow-lg" />
             <h1 className="text-3xl font-black text-white mb-2">Bedankt voor je stem!</h1>
-            <p className="text-white/60">
+            <p className="text-white/55">
               Je hebt {webapp.appName} een totaalscore van {totalScore}/6 gegeven.
             </p>
           </div>
         </div>
-        <div className="mx-auto max-w-2xl px-4 md:px-6 -mt-6">
-          <div className="rounded-md border border-[#3B28A0]/10 bg-white p-6 text-center">
-            <p className="text-[#3B28A0]/60 mb-6">Wil je nog meer apps beoordelen?</p>
+        <div className="mx-auto max-w-2xl px-4 md:px-6">
+          <div className="glass-card rounded-xl p-6 text-center">
+            <p className="text-white/50 mb-6">Wil je nog meer apps beoordelen?</p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link href="/">
-                <Button className="bg-[#3B28A0]" data-testid="button-back-overview">
+                <Button
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white border-0"
+                  data-testid="button-back-overview"
+                >
                   Terug naar Overzicht
                 </Button>
               </Link>
               <Link href="/scorebord">
-                <Button variant="outline" className="border-[#3B28A0]/20 text-[#3B28A0]" data-testid="button-to-scoreboard">
+                <Button
+                  variant="outline"
+                  className="border-white/20 text-white/70 hover:text-white hover:bg-white/10 bg-transparent"
+                  data-testid="button-to-scoreboard"
+                >
                   Bekijk Scorebord
                 </Button>
               </Link>
@@ -163,11 +173,15 @@ export default function VotePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#EDEAFA] to-white pb-16">
-      <div className="bg-[#3B28A0] py-12">
-        <div className="mx-auto max-w-2xl px-4 md:px-6">
+    <div className="min-h-screen pb-16">
+      <div className="relative overflow-hidden py-12">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-1/4 h-48 w-48 rounded-full bg-purple-600/20 blur-3xl" />
+          <div className="absolute bottom-0 left-1/4 h-40 w-40 rounded-full bg-pink-500/15 blur-3xl" />
+        </div>
+        <div className="relative mx-auto max-w-2xl px-4 md:px-6">
           <Link href="/">
-            <Button variant="ghost" className="text-white/70 mb-4 -ml-2" data-testid="button-back">
+            <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/10 mb-4 -ml-2" data-testid="button-back">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Terug
             </Button>
@@ -177,7 +191,7 @@ export default function VotePage() {
               <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight" data-testid="text-vote-title">
                 {webapp.appName}
               </h1>
-              <p className="mt-1 text-white/60">{webapp.teamName}</p>
+              <p className="mt-1 text-purple-300/70">{webapp.teamName}</p>
             </div>
             <a
               href={webapp.url}
@@ -185,7 +199,7 @@ export default function VotePage() {
               rel="noopener noreferrer"
               className="shrink-0"
             >
-              <Button variant="outline" className="border-white/30 text-white" data-testid="button-visit-app">
+              <Button variant="outline" className="glass border-white/20 text-white hover:bg-white/10" data-testid="button-visit-app">
                 <ExternalLink className="mr-2 h-4 w-4" />
                 Bekijk App
               </Button>
@@ -194,21 +208,22 @@ export default function VotePage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-2xl px-4 md:px-6 -mt-6">
-        <div className="rounded-md border border-[#3B28A0]/10 bg-white p-6 mb-4">
-          <p className="text-sm text-[#3B28A0]/70" data-testid="text-webapp-description">
+      <div className="mx-auto max-w-2xl px-4 md:px-6 -mt-4">
+        <div className="glass-card rounded-xl p-5 mb-4">
+          <p className="text-sm text-white/60" data-testid="text-webapp-description">
             {webapp.description}
           </p>
         </div>
 
         <div className="mb-4">
-          <label className="mb-2 block text-sm font-bold text-[#3B28A0]">
+          <label className="mb-2 block text-sm font-bold text-white/80">
             Jouw naam
           </label>
           <Input
             placeholder="Vul je naam in..."
             value={voterName}
             onChange={(e) => setVoterName(e.target.value)}
+            className="glass-input"
             data-testid="input-voter-name"
           />
         </div>
@@ -226,15 +241,15 @@ export default function VotePage() {
           ))}
         </div>
 
-        <div className="sticky bottom-4 rounded-md border border-[#3B28A0]/10 bg-white p-4 flex items-center justify-between gap-4">
+        <div className="sticky bottom-4 glass-card rounded-xl p-4 flex items-center justify-between gap-4">
           <div>
-            <div className="text-sm text-[#3B28A0]/50">Totaalscore</div>
-            <div className="text-2xl font-black text-[#3B28A0]" data-testid="text-total-score">
-              {totalScore} <span className="text-sm font-normal text-[#3B28A0]/40">/ 6</span>
+            <div className="text-sm text-white/45">Totaalscore</div>
+            <div className="text-2xl font-black gradient-text" data-testid="text-total-score">
+              {totalScore} <span className="text-sm font-normal text-white/35">/ 6</span>
             </div>
           </div>
           <Button
-            className="bg-[#3B28A0] font-bold px-8"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold px-8 border-0 glow-purple"
             onClick={handleSubmit}
             disabled={mutation.isPending}
             data-testid="button-cast-vote"
