@@ -45,11 +45,7 @@ export default function AdminLogin() {
       navigate("/admin");
     },
     onError: () => {
-      toast({
-        title: "Inloggen mislukt",
-        description: "Controleer je e-mailadres en wachtwoord.",
-        variant: "destructive",
-      });
+      toast({ title: "Inloggen mislukt", description: "Controleer je e-mailadres en wachtwoord.", variant: "destructive" });
     },
   });
 
@@ -57,19 +53,19 @@ export default function AdminLogin() {
     <div className="min-h-screen flex flex-col">
       <div className="relative overflow-hidden py-12">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-1/3 h-48 w-48 rounded-full bg-purple-600/20 blur-3xl" />
-          <div className="absolute bottom-0 left-1/3 h-48 w-48 rounded-full bg-pink-500/15 blur-3xl" />
+          <div className="absolute top-0 right-1/3 h-48 w-48 rounded-full bg-purple-300/30 dark:bg-purple-600/20 blur-3xl" />
+          <div className="absolute bottom-0 left-1/3 h-48 w-48 rounded-full bg-pink-300/20 dark:bg-pink-500/15 blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-md px-4 md:px-6">
           <Link href="/">
-            <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/10 mb-4 -ml-2" data-testid="button-back">
+            <Button variant="ghost" className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 dark:text-white/60 dark:hover:text-white dark:hover:bg-white/10 mb-4 -ml-2" data-testid="button-back">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Terug
             </Button>
           </Link>
           <div className="flex items-center gap-3">
-            <Shield className="h-8 w-8 text-purple-400" />
-            <h1 className="text-3xl font-black text-white tracking-tight" data-testid="text-login-title">
+            <Shield className="h-8 w-8 text-purple-500 dark:text-purple-400" />
+            <h1 className="text-3xl font-black text-purple-900 dark:text-white tracking-tight" data-testid="text-login-title">
               Admin <span className="gradient-text">Login</span>
             </h1>
           </div>
@@ -85,7 +81,7 @@ export default function AdminLogin() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white/80 font-bold">E-mailadres</FormLabel>
+                    <FormLabel className="text-purple-800 dark:text-white/80 font-bold">E-mailadres</FormLabel>
                     <FormControl>
                       <Input type="email" placeholder="admin@voorbeeld.nl" className="glass-input" {...field} data-testid="input-email" />
                     </FormControl>
@@ -98,7 +94,7 @@ export default function AdminLogin() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white/80 font-bold">Wachtwoord</FormLabel>
+                    <FormLabel className="text-purple-800 dark:text-white/80 font-bold">Wachtwoord</FormLabel>
                     <FormControl>
                       <Input type="password" placeholder="Wachtwoord" className="glass-input" {...field} data-testid="input-password" />
                     </FormControl>

@@ -66,34 +66,19 @@ export default function VotePage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/webapps"] });
       setSubmitted(true);
-      toast({
-        title: "Stem opgeslagen!",
-        description: "Bedankt voor je beoordeling.",
-      });
+      toast({ title: "Stem opgeslagen!", description: "Bedankt voor je beoordeling." });
     },
     onError: (error: Error) => {
-      toast({
-        title: "Fout bij stemmen",
-        description: error.message,
-        variant: "destructive",
-      });
+      toast({ title: "Fout bij stemmen", description: error.message, variant: "destructive" });
     },
   });
 
   const handleSubmit = () => {
     if (!voterName.trim()) {
-      toast({
-        title: "Vul je naam in",
-        description: "We willen weten wie er stemt.",
-        variant: "destructive",
-      });
+      toast({ title: "Vul je naam in", description: "We willen weten wie er stemt.", variant: "destructive" });
       return;
     }
-    mutation.mutate({
-      webappId,
-      voterName: voterName.trim(),
-      ...scores,
-    });
+    mutation.mutate({ webappId, voterName: voterName.trim(), ...scores });
   };
 
   const totalScore = scores.criterium1 + scores.criterium2 + scores.criterium3;
@@ -103,13 +88,13 @@ export default function VotePage() {
       <div className="min-h-screen">
         <div className="py-12">
           <div className="mx-auto max-w-2xl px-4 md:px-6">
-            <Skeleton className="h-8 w-48 bg-white/10 mb-2" />
-            <Skeleton className="h-5 w-64 bg-white/10" />
+            <Skeleton className="h-8 w-48 bg-purple-100 dark:bg-white/10 mb-2" />
+            <Skeleton className="h-5 w-64 bg-purple-100 dark:bg-white/10" />
           </div>
         </div>
         <div className="mx-auto max-w-2xl px-4 md:px-6">
           <div className="glass-card rounded-xl p-6">
-            <Skeleton className="h-40 w-full bg-white/10" />
+            <Skeleton className="h-40 w-full bg-purple-100 dark:bg-white/10" />
           </div>
         </div>
       </div>
@@ -120,7 +105,7 @@ export default function VotePage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-xl font-bold text-white mb-2">App niet gevonden</h2>
+          <h2 className="text-xl font-bold text-purple-900 dark:text-white mb-2">App niet gevonden</h2>
           <Link href="/">
             <Button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0">Terug naar overzicht</Button>
           </Link>
@@ -134,34 +119,27 @@ export default function VotePage() {
       <div className="min-h-screen">
         <div className="relative overflow-hidden py-12">
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-green-500/20 blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-green-300/25 dark:bg-green-500/20 blur-3xl" />
           </div>
           <div className="relative mx-auto max-w-2xl px-4 md:px-6 text-center">
-            <CheckCircle className="mx-auto h-16 w-16 text-green-400 mb-4 drop-shadow-lg" />
-            <h1 className="text-3xl font-black text-white mb-2">Bedankt voor je stem!</h1>
-            <p className="text-white/55">
+            <CheckCircle className="mx-auto h-16 w-16 text-green-500 dark:text-green-400 mb-4 drop-shadow-lg" />
+            <h1 className="text-3xl font-black text-purple-900 dark:text-white mb-2">Bedankt voor je stem!</h1>
+            <p className="text-purple-600/65 dark:text-white/55">
               Je hebt {webapp.appName} een totaalscore van {totalScore}/6 gegeven.
             </p>
           </div>
         </div>
         <div className="mx-auto max-w-2xl px-4 md:px-6">
           <div className="glass-card rounded-xl p-6 text-center">
-            <p className="text-white/50 mb-6">Wil je nog meer apps beoordelen?</p>
+            <p className="text-purple-600/60 dark:text-white/50 mb-6">Wil je nog meer apps beoordelen?</p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link href="/">
-                <Button
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white border-0"
-                  data-testid="button-back-overview"
-                >
+                <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white border-0" data-testid="button-back-overview">
                   Terug naar Overzicht
                 </Button>
               </Link>
               <Link href="/scorebord">
-                <Button
-                  variant="outline"
-                  className="border-white/20 text-white/70 hover:text-white hover:bg-white/10 bg-transparent"
-                  data-testid="button-to-scoreboard"
-                >
+                <Button variant="outline" className="border-purple-200 dark:border-white/20 text-purple-600 dark:text-white/70 hover:bg-purple-50 dark:hover:bg-white/10 bg-transparent" data-testid="button-to-scoreboard">
                   Bekijk Scorebord
                 </Button>
               </Link>
@@ -176,30 +154,25 @@ export default function VotePage() {
     <div className="min-h-screen pb-16">
       <div className="relative overflow-hidden py-12">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-1/4 h-48 w-48 rounded-full bg-purple-600/20 blur-3xl" />
-          <div className="absolute bottom-0 left-1/4 h-40 w-40 rounded-full bg-pink-500/15 blur-3xl" />
+          <div className="absolute top-0 right-1/4 h-48 w-48 rounded-full bg-purple-300/25 dark:bg-purple-600/20 blur-3xl" />
+          <div className="absolute bottom-0 left-1/4 h-40 w-40 rounded-full bg-pink-300/20 dark:bg-pink-500/15 blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-2xl px-4 md:px-6">
           <Link href="/">
-            <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/10 mb-4 -ml-2" data-testid="button-back">
+            <Button variant="ghost" className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 dark:text-white/60 dark:hover:text-white dark:hover:bg-white/10 mb-4 -ml-2" data-testid="button-back">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Terug
             </Button>
           </Link>
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight" data-testid="text-vote-title">
+              <h1 className="text-2xl md:text-3xl font-black text-purple-900 dark:text-white tracking-tight" data-testid="text-vote-title">
                 {webapp.appName}
               </h1>
-              <p className="mt-1 text-purple-300/70">{webapp.teamName}</p>
+              <p className="mt-1 text-purple-500 dark:text-purple-300/70">{webapp.teamName}</p>
             </div>
-            <a
-              href={webapp.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0"
-            >
-              <Button variant="outline" className="glass border-white/20 text-white hover:bg-white/10" data-testid="button-visit-app">
+            <a href={webapp.url} target="_blank" rel="noopener noreferrer" className="shrink-0">
+              <Button variant="outline" className="glass border-purple-200 dark:border-white/20 text-purple-600 dark:text-white hover:bg-purple-50 dark:hover:bg-white/10" data-testid="button-visit-app">
                 <ExternalLink className="mr-2 h-4 w-4" />
                 Bekijk App
               </Button>
@@ -210,15 +183,13 @@ export default function VotePage() {
 
       <div className="mx-auto max-w-2xl px-4 md:px-6 -mt-4">
         <div className="glass-card rounded-xl p-5 mb-4">
-          <p className="text-sm text-white/60" data-testid="text-webapp-description">
+          <p className="text-sm text-purple-700/65 dark:text-white/60" data-testid="text-webapp-description">
             {webapp.description}
           </p>
         </div>
 
         <div className="mb-4">
-          <label className="mb-2 block text-sm font-bold text-white/80">
-            Jouw naam
-          </label>
+          <label className="mb-2 block text-sm font-bold text-purple-800 dark:text-white/80">Jouw naam</label>
           <Input
             placeholder="Vul je naam in..."
             value={voterName}
@@ -243,9 +214,9 @@ export default function VotePage() {
 
         <div className="sticky bottom-4 glass-card rounded-xl p-4 flex items-center justify-between gap-4">
           <div>
-            <div className="text-sm text-white/45">Totaalscore</div>
+            <div className="text-sm text-purple-500/70 dark:text-white/45">Totaalscore</div>
             <div className="text-2xl font-black gradient-text" data-testid="text-total-score">
-              {totalScore} <span className="text-sm font-normal text-white/35">/ 6</span>
+              {totalScore} <span className="text-sm font-normal text-purple-400/50 dark:text-white/35">/ 6</span>
             </div>
           </div>
           <Button
@@ -254,14 +225,7 @@ export default function VotePage() {
             disabled={mutation.isPending}
             data-testid="button-cast-vote"
           >
-            {mutation.isPending ? (
-              "Bezig..."
-            ) : (
-              <>
-                <Send className="mr-2 h-4 w-4" />
-                Stem Opslaan
-              </>
-            )}
+            {mutation.isPending ? "Bezig..." : <><Send className="mr-2 h-4 w-4" />Stem Opslaan</>}
           </Button>
         </div>
       </div>
