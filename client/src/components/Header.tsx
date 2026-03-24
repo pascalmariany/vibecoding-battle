@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <header className="glass-header sticky top-0 z-50 w-full">
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
-        <Link href="/" data-testid="link-home">
+        <a href="https://www.onderwijsorakel.nl" target="_blank" rel="noopener noreferrer" data-testid="link-home">
           <div className="flex items-center gap-3 cursor-pointer">
             <img
               src="/logo.png"
@@ -46,7 +46,7 @@ export default function Header() {
               </span>
             </div>
           </div>
-        </Link>
+        </a>
 
         <nav className="hidden md:flex items-center gap-1" data-testid="nav-desktop">
           {allItems.map((item) => {
